@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane prefHeight="740.0" prefWidth="1220.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinema.controller.SeleccionAsientosController">
+
+    <top>
+        <VBox spacing="10.0" style="-fx-background-color: #0D0D0D;">
+            <padding>
+                <Insets bottom="10.0" left="25.0" right="25.0" top="15.0"/>
+            </padding>
+            <Label alignment="CENTER" maxWidth="Infinity" style="-fx-text-fill: #C28D39; -fx-font-size: 28px; -fx-font-weight: bold;" text="CinemaUQ"/>
+            <HBox alignment="CENTER" spacing="60.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <padding>
+                    <Insets bottom="10.0" left="25.0" right="25.0" top="10.0"/>
+                </padding>
+                <Label fx:id="lblHeaderPelicula" style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Pelicula: Beyond Horizons"/>
+                <Label fx:id="lblHeaderFecha" style="-fx-text-fill: #EFE5D2; -fx-font-size: 14px;" text="Fecha: 22 Nov 2026"/>
+                <Label fx:id="lblHeaderHora" style="-fx-text-fill: #EFE5D2; -fx-font-size: 14px;" text="Hora: 7:15 PM"/>
+                <Label fx:id="lblHeaderSala" style="-fx-text-fill: #EFE5D2; -fx-font-size: 14px;" text="Sala: 2"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="22.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="25.0" right="15.0" top="10.0"/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="25.0" left="30.0" right="30.0" top="25.0"/>
+            </padding>
+
+            <VBox alignment="CENTER" spacing="6.0">
+                <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 13px; -fx-font-weight: bold;" text="P A N T A L L A   ( S C R E E N )"/>
+                <Region maxWidth="580.0" prefHeight="14.0" style="-fx-background-color: #C28D39; -fx-background-radius: 20 20 0 0; -fx-border-color: #EFE5D2; -fx-border-width: 2 0 0 0;"/>
+            </VBox>
+
+            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: #0D0D0D; -fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <StackPane style="-fx-background-color: #0D0D0D;">
+                    <GridPane fx:id="gridMapaAsientos" alignment="CENTER" hgap="10.0" vgap="10.0">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </padding>
+                    </GridPane>
+                </StackPane>
+            </ScrollPane>
+
+            <HBox alignment="CENTER" spacing="30.0">
+                <HBox alignment="CENTER" spacing="8.0">
+                    <Region prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #EFE5D2; -fx-border-radius: 4;"/>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Disponible (General / Preferencial)"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8.0">
+                    <Region prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #C28D39; -fx-background-radius: 4;"/>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Seleccionado"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8.0">
+                    <Region prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #710912; -fx-background-radius: 4;"/>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Ocupado"/>
+                </HBox>
+                <HBox alignment="CENTER" spacing="8.0">
+                    <Region prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 2; -fx-border-radius: 4;"/>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Accesible"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox prefWidth="360.0" spacing="16.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="5.0" right="25.0" top="10.0"/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="20.0" left="22.0" right="22.0" top="20.0"/>
+            </padding>
+
+            <Label fx:id="lblSideTituloPelicula" style="-fx-text-fill: #C28D39; -fx-font-size: 20px; -fx-font-weight: bold;" text="Beyond Horizons"/>
+            <Label fx:id="lblSideDetallesFuncion" style="-fx-text-fill: #EFE5D2; -fx-font-size: 13px;" text="Sala 2 - 7:15 PM"/>
+            <Line endX="300.0" stroke="#C28D39"/>
+
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 14px; -fx-font-weight: bold;" text="ASIENTOS SELECCIONADOS"/>
+            <FlowPane fx:id="flowAsientosSeleccionados" hgap="8.0" minHeight="45.0" prefWrapLength="300.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-padding: 8;" vgap="8.0"/>
+
+            <Line endX="300.0" stroke="#C28D39"/>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 14px; -fx-font-weight: bold;" text="ENTRADAS"/>
+
+            <GridPane hgap="10.0" vgap="8.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                    <ColumnConstraints halignment="RIGHT"/>
+                </columnConstraints>
+                <Label style="-fx-text-fill: #EFE5D2;" text="Cantidad de Boletas:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="lblCantidadBoletas" style="-fx-text-fill: #EFE5D2;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label style="-fx-text-fill: #EFE5D2;" text="Precio Unitario Base:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="lblPrecioUnitario" style="-fx-text-fill: #EFE5D2;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="SUBTOTAL ENTRADAS:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="lblSubtotalEntradas" style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            </GridPane>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="btnIrCompraConfiteria" maxWidth="Infinity" onAction="#onIrACompraConfiteria"
+                    style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 9; -fx-cursor: hand;"
+                    text="AGREGAR CONFITERIA Y COMBOS"/>
+            <Button fx:id="btnContinuarPago" maxWidth="Infinity" onAction="#onContinuarAlPago"
+                    style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;"
+                    text="CONTINUAR AL PAGO"/>
+            <Button fx:id="btnVolverCartelera" maxWidth="Infinity" onAction="#onVolverACartelera"
+                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8; -fx-cursor: hand;"
+                    text="VOLVER A CARTELERA"/>
+
+            <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #0D0D0D; -fx-padding: 12px; -fx-background-radius: 6px; -fx-border-color: #C28D39; -fx-border-radius: 6px;">
+                <VBox HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 12px; -fx-font-weight: bold;" text="PUNTOS DE LEALTAD"/>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 11px;" text="Ganaras con esta compra:"/>
+                </VBox>
+                <Label fx:id="lblPuntosEstimados" style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="0 pts"/>
+            </HBox>
+        </VBox>
+    </right>
+</BorderPane>

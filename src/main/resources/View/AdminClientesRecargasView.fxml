@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="720.0" prefWidth="1060.0" spacing="16.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cinema.controller.AdminClientesRecargasController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Gestion de Recargas de Tarjetas Virtuales, Clientes y Compras"/>
+
+    <TabPane style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="RECARGAS DE TARJETA VIRTUAL">
+            <VBox spacing="15.0" style="-fx-background-color: #362822;">
+                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
+
+                <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding><Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/></padding>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="Recarga Directa (recargarTarjeta()):"/>
+                    <TextField fx:id="txtAdminCorreoClienteRecarga" prefWidth="240.0" promptText="Correo o ID del Cliente" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtAdminMontoRecargaDirecta" prefWidth="160.0" promptText="Monto ($)" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <Button onAction="#onRecargarTarjetaDirecto"
+                            style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15;"
+                            text="Realizar Recarga"/>
+                </HBox>
+
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Solicitudes de Recarga de Clientes (SolicitudRecarga)"/>
+                <TableView fx:id="tblSolicitudesRecargaAdmin" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colAdmSolId" prefWidth="100.0" text="ID Solicitud"/>
+                        <TableColumn fx:id="colAdmSolCliente" prefWidth="240.0" text="Cliente"/>
+                        <TableColumn fx:id="colAdmSolTarjeta" prefWidth="170.0" text="Tarjeta Virtual"/>
+                        <TableColumn fx:id="colAdmSolMonto" prefWidth="140.0" text="Monto ($)"/>
+                        <TableColumn fx:id="colAdmSolFecha" prefWidth="160.0" text="Fecha"/>
+                        <TableColumn fx:id="colAdmSolEstado" prefWidth="130.0" text="EstadoSolicitud"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                    <Button onAction="#onRechazarSolicitudRecarga"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9 18;"
+                            text="Rechazar Solicitud"/>
+                    <Button onAction="#onAprobarSolicitudRecarga"
+                            style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 9 18;"
+                            text="Aprobar y Recargar Tarjeta"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="CONSULTA DE CLIENTES Y COMPRAS">
+            <HBox spacing="20.0" style="-fx-background-color: #362822;">
+                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
+
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Clientes Registrados (consultarClientes())"/>
+                    <TableView fx:id="tblAdminClientes" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colAdmCliId" prefWidth="95.0" text="ID"/>
+                            <TableColumn fx:id="colAdmCliNombre" prefWidth="160.0" text="Nombre"/>
+                            <TableColumn fx:id="colAdmCliCorreo" prefWidth="160.0" text="Correo"/>
+                            <TableColumn fx:id="colAdmCliSaldo" prefWidth="100.0" text="Saldo Tarjeta"/>
+                            <TableColumn fx:id="colAdmCliPuntos" prefWidth="85.0" text="Puntos"/>
+                        </columns>
+                    </TableView>
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <ComboBox fx:id="cmbEstrategiaCliente" prefWidth="240.0" promptText="Estrategia (Estandar / VIP)" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+                        <Button onAction="#onActualizarEstrategiaCliente"
+                                style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7 14;"
+                                text="Asignar Estrategia"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Compras Registradas (consultarCompra())"/>
+                    <TableView fx:id="tblAdminComprasGlobal" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colAdmCmpId" prefWidth="80.0" text="ID"/>
+                            <TableColumn fx:id="colAdmCmpCliente" prefWidth="140.0" text="Cliente"/>
+                            <TableColumn fx:id="colAdmCmpFuncion" prefWidth="140.0" text="Funcion"/>
+                            <TableColumn fx:id="colAdmCmpTotal" prefWidth="95.0" text="Total"/>
+                            <TableColumn fx:id="colAdmCmpEstado" prefWidth="110.0" text="EstadoCompra"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

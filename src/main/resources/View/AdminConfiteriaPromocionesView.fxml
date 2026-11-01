@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="720.0" prefWidth="1060.0" spacing="16.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cinema.controller.AdminConfiteriaPromocionesController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Administracion de Confiteria (Composite) y Promociones (Decorator)"/>
+
+    <TabPane style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="PRODUCTOS Y COMBOS">
+            <HBox spacing="20.0" style="-fx-background-color: #362822;">
+                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
+
+                <VBox prefWidth="300.0" spacing="10.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Nuevo Producto Simple"/>
+                    <TextField fx:id="txtProdCodigo" promptText="Codigo" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtProdNombre" promptText="Nombre del Producto" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtProdPrecio" promptText="Precio ($)" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtProdPuntos" promptText="Puntos Redencion" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <Button maxWidth="Infinity" onAction="#onRegistrarProductoSimple"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
+                            text="Registrar Producto"/>
+                </VBox>
+
+                <VBox prefWidth="340.0" spacing="10.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Armar Nuevo Combo"/>
+                    <TextField fx:id="txtComboCodigo" promptText="Codigo Combo" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtComboNombre" promptText="Nombre del Combo" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtComboDescuento" promptText="Descuento" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtComboPuntos" promptText="Puntos Redencion" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <HBox spacing="8.0">
+                        <ComboBox fx:id="cmbItemParaCombo" maxWidth="Infinity" promptText="Seleccionar ItemConfiteria" style="-fx-background-color: #362822; -fx-border-color: #C28D39;" HBox.hgrow="ALWAYS"/>
+                        <Button onAction="#onAgregarItemACombo"
+                                style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-padding: 6 12;"
+                                text="Agregar"/>
+                    </HBox>
+                    <ListView fx:id="lstItemsDelCombo" prefHeight="85.0" style="-fx-control-inner-background: #362822; -fx-border-color: #C28D39;"/>
+                    <Button maxWidth="Infinity" onAction="#onRegistrarCombo"
+                            style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 9;"
+                            text="Guardar Combo"/>
+                </VBox>
+
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Catalogo General Confiteria"/>
+                    <TableView fx:id="tblAdminConfiteria" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colAdmItemCod" prefWidth="75.0" text="Codigo"/>
+                            <TableColumn fx:id="colAdmItemNom" prefWidth="150.0" text="Nombre"/>
+                            <TableColumn fx:id="colAdmItemPre" prefWidth="90.0" text="Precio"/>
+                            <TableColumn fx:id="colAdmItemPts" prefWidth="80.0" text="Puntos"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </Tab>
+
+        <Tab text="PROMOCIONES">
+            <HBox spacing="20.0" style="-fx-background-color: #362822;">
+                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
+                <VBox prefWidth="340.0" spacing="12.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registrar Promocion"/>
+                    <TextField fx:id="txtPromoNombre" promptText="Nombre de la Promocion" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <ComboBox fx:id="cmbTipoPromocion" maxWidth="Infinity" promptText="TipoPromocion" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
+                    <TextField fx:id="txtPromoValor" promptText="Valor o Porcentaje" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                    <ComboBox fx:id="cmbPromoDiaSemana" maxWidth="Infinity" promptText="Dia de la Semana (DayOfWeek)" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
+                    <DatePicker fx:id="dpPromoInicio" maxWidth="Infinity" promptText="Fecha Inicio" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
+                    <DatePicker fx:id="dpPromoFin" maxWidth="Infinity" promptText="Fecha Fin" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
+                    <Button maxWidth="Infinity" onAction="#onRegistrarPromocion"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
+                            text="Guardar Promocion"/>
+                </VBox>
+
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Promociones Registradas"/>
+                    <TableView fx:id="tblAdminPromociones" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colPromoNombre" prefWidth="170.0" text="Nombre"/>
+                            <TableColumn fx:id="colPromoTipo" prefWidth="120.0" text="TipoPromocion"/>
+                            <TableColumn fx:id="colPromoValor" prefWidth="95.0" text="Valor"/>
+                            <TableColumn fx:id="colPromoDia" prefWidth="110.0" text="Dia"/>
+                            <TableColumn fx:id="colPromoVigencia" prefWidth="180.0" text="Periodo Vigencia"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </Tab>
+
+    </TabPane>
+</VBox>
