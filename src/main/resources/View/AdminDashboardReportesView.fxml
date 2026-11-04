@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="adminMainBorderPane" prefHeight="780.0" prefWidth="1320.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinema.controller.AdminDashboardReportesController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">
+            <padding>
+                <Insets bottom="12.0" left="25.0" right="25.0" top="12.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="CinemaUQ"/>
+            <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 15px; -fx-font-weight: bold;" text="PANEL DE ADMINISTRACION Y REPORTES OPERATIVOS (PROXY)"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblAdminActivo" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="Administrador"/>
+            <Button onAction="#onCerrarSesionAdmin"
+                    style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7 15;"
+                    text="Cerrar Sesion"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="250.0" spacing="10.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 1 0 0;">
+            <padding>
+                <Insets bottom="20.0" left="14.0" right="14.0" top="25.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 13px; -fx-font-weight: bold;" text="MODULOS ADMINISTRATIVOS"/>
+            <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarDashboardReportes"
+                    style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 10 15;"
+                    text="Dashboard y Reportes"/>
+            <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarGestionCartelera"
+                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 10 15;"
+                    text="Peliculas, Salas y Funciones"/>
+            <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarGestionConfiteria"
+                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 10 15;"
+                    text="Confiteria, Combos y Promos"/>
+            <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarGestionClientesRecargas"
+                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 10 15;"
+                    text="Recargas, Clientes y Compras"/>
+            <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarRegistroUsuarios"
+                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 10 15;"
+                    text="Registrar Clientes y Admins"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="16.0" style="-fx-background-color: #0D0D0D;">
+            <padding>
+                <Insets bottom="20.0" left="22.0" right="22.0" top="18.0"/>
+            </padding>
+
+            <HBox spacing="18.0">
+                <VBox spacing="4.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/></padding>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="ENTRADAS VENDIDAS"/>
+                    <Label fx:id="lblKpiEntradas" style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="0"/>
+                </VBox>
+                <VBox spacing="4.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/></padding>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="INGRESOS POR VENTAS"/>
+                    <Label fx:id="lblKpiIngresos" style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="$ 0.00"/>
+                </VBox>
+                <VBox spacing="4.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/></padding>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="OCUPACION PROMEDIO SALAS"/>
+                    <Label fx:id="lblKpiOcupacion" style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="0 %"/>
+                </VBox>
+                <VBox spacing="4.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/></padding>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="REEMBOLSOS REALIZADOS"/>
+                    <Label fx:id="lblKpiReembolsos" style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="0"/>
+                </VBox>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <padding><Insets bottom="10.0" left="16.0" right="16.0" top="10.0"/></padding>
+                <Label style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="TipoReporte:"/>
+                <ComboBox fx:id="cmbTipoReporte" prefWidth="190.0" promptText="Seleccionar Tipo" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+                <Label style="-fx-text-fill: #EFE5D2;" text="Inicio:"/>
+                <DatePicker fx:id="dpFechaInicio" prefWidth="135.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+                <Label style="-fx-text-fill: #EFE5D2;" text="Fin:"/>
+                <DatePicker fx:id="dpFechaFin" prefWidth="135.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+                <Button onAction="#onGenerarReporte"
+                        style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7 14;"
+                        text="Generar Reporte"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button onAction="#onExportarTxt"
+                        style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7 14;"
+                        text="Exportar .TXT"/>
+                <Button onAction="#onExportarPdf"
+                        style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 7 14;"
+                        text="Exportar .PDF"/>
+            </HBox>
+
+            <TabPane style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+                <Tab text="REPORTES VISUALES (GRAFICAS JAVAFX)">
+                    <HBox spacing="15.0" style="-fx-background-color: #362822;">
+                        <padding><Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/></padding>
+
+                        <VBox style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <BarChart fx:id="barChartVentasPelicula" title="Comparativa de Ventas, Entradas y Productos" VBox.vgrow="ALWAYS">
+                                <xAxis><CategoryAxis label="Categoria" tickLabelFill="#EFE5D2"/></xAxis>
+                                <yAxis><NumberAxis label="Total" tickLabelFill="#EFE5D2"/></yAxis>
+                            </BarChart>
+                        </VBox>
+
+                        <VBox style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <PieChart fx:id="pieChartOcupacionSalas" title="Porcentaje de Ocupacion de Salas" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+
+                        <VBox style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 6;" HBox.hgrow="ALWAYS">
+                            <LineChart fx:id="lineChartComportamientoTiempo" title="Comportamiento de Ventas y Recargas" VBox.vgrow="ALWAYS">
+                                <xAxis><CategoryAxis label="Fecha" tickLabelFill="#EFE5D2"/></xAxis>
+                                <yAxis><NumberAxis label="Monto ($)" tickLabelFill="#EFE5D2"/></yAxis>
+                            </LineChart>
+                        </VBox>
+                    </HBox>
+                </Tab>
+
+                <Tab text="DETALLE DE REGISTROS Y TOTALES (TEMPLATE METHOD)">
+                    <VBox spacing="10.0" style="-fx-background-color: #362822;">
+                        <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
+                        <HBox spacing="25.0">
+                            <Label fx:id="lblTituloReporteGenerado" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="Titulo: ---"/>
+                            <Label fx:id="lblFechaGeneracionReporte" style="-fx-text-fill: #EFE5D2;" text="Fecha de Generacion: ---"/>
+                            <Label fx:id="lblTotalRegistrosReporte" style="-fx-text-fill: #EFE5D2;" text="Total Registros: 0"/>
+                        </HBox>
+                        <TextArea fx:id="txtVistaPreviaReporte" editable="false"
+                                  style="-fx-control-inner-background: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-font-family: 'Consolas'; -fx-font-size: 13px; -fx-border-color: #C28D39;"
+                                  VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

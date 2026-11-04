@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="720.0" prefWidth="1060.0" spacing="16.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cinema.controller.AdminRegistroUsuariosController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Registro y Gestion de Usuarios (ClienteFactory y AdministradorFactory)"/>
+
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+
+        <VBox prefWidth="380.0" spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <padding>
+                <Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Crear Nueva Persona"/>
+            <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" wrapText="true"
+                   text="Selecciona el tipo de fabrica concreta para instanciar y agregar un Cliente o un Administrador en CinemaUQ."/>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="Rol / Fabrica (PersonaFactory):"/>
+                <ComboBox fx:id="cmbAdminTipoUsuario" onAction="#onSeleccionarTipoUsuario" maxWidth="Infinity" promptText="CLIENTE / ADMINISTRADOR" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Identificacion (ID):"/>
+                <TextField fx:id="txtUsuId" promptText="Documento de identidad" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Nombre Completo:"/>
+                <TextField fx:id="txtUsuNombre" promptText="Nombre y apellidos" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Correo Electronico:"/>
+                <TextField fx:id="txtUsuCorreo" promptText="correo@uniquindio.edu.co" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Contrasena:"/>
+                <PasswordField fx:id="txtUsuContrasena" promptText="Contrasena de acceso" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Telefono (Atributo exclusivo Cliente):"/>
+                <TextField fx:id="txtUsuTelefonoCliente" promptText="Telefono de contacto" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label style="-fx-text-fill: #EFE5D2;" text="Cargo (Atributo exclusivo Administrador):"/>
+                <TextField fx:id="txtUsuCargoAdmin" promptText="Cargo administrativo" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="btnGuardarNuevoUsuario" maxWidth="Infinity" onAction="#onRegistrarUsuarioDesdeAdmin"
+                    style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;"
+                    text="REGISTRAR PERSONA EN CINEMAUQ"/>
+        </VBox>
+
+        <VBox spacing="14.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/>
+            </padding>
+
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Directorio de Personas Registradas (Clientes y Administradores)"/>
+
+            <TableView fx:id="tblDirectorioPersonas" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colPerId" prefWidth="100.0" text="ID"/>
+                    <TableColumn fx:id="colPerNombre" prefWidth="170.0" text="Nombre"/>
+                    <TableColumn fx:id="colPerCorreo" prefWidth="170.0" text="Correo"/>
+                    <TableColumn fx:id="colPerRol" prefWidth="115.0" text="Rol (esAdmin)"/>
+                    <TableColumn fx:id="colPerDetalle" prefWidth="150.0" text="Telefono / Cargo"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+    </HBox>
+</VBox>

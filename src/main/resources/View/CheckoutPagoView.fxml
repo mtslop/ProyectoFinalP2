@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+
+<BorderPane prefHeight="680.0" prefWidth="1050.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinema.controller.CheckoutPagoController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="15.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="Confirmacion de Compra, Promociones y Pago con Tarjeta Virtual"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="25.0" style="-fx-background-color: #0D0D0D;">
+            <padding>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+            </padding>
+
+            <VBox spacing="15.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="1. Resumen de la Orden y Motor de Precios (Decorator)"/>
+
+                <GridPane hgap="15.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="180.0"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="ID de Compra:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblIdCompra" style="-fx-text-fill: #EFE5D2; -fx-font-weight: bold;" text="CMP-0001" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Estado de Compra (State):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="lblEstadoCompra" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="PENDIENTE" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Pelicula y Funcion:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblResumenFuncion" style="-fx-text-fill: #EFE5D2;" text="Beyond Horizons - Sala 2" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Asientos Seleccionados:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="lblResumenAsientos" style="-fx-text-fill: #EFE5D2;" text="D7, D8" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                </GridPane>
+
+                <Line endX="480.0" stroke="#C28D39"/>
+
+                <VBox spacing="8.0">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Aplicar Promocion Vigente"/>
+                    <HBox spacing="12.0">
+                        <ComboBox fx:id="cmbPromocionesVigentes" maxWidth="Infinity" promptText="Seleccionar promocion (Porcentaje, Dia Especial, Valor Fijo)" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnAplicarPromocion" onAction="#onAplicarPromocion"
+                                style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7 15;"
+                                text="Aplicar Promocion"/>
+                    </HBox>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Detalle de composicion de descuentos (Precio.descripcion()):"/>
+                    <TextArea fx:id="txtDescripcionDecorador" editable="false" prefHeight="70.0"
+                              promptText="PrecioBase -> DescuentoDiaEspecial -> DescuentoPorcentaje"
+                              style="-fx-control-inner-background: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+                </VBox>
+
+                <Line endX="480.0" stroke="#C28D39"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label style="-fx-text-fill: #C28D39; -fx-font-size: 14px; -fx-font-weight: bold;" text="Redencion de Entrada con Puntos"/>
+                        <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Utiliza primero los lotes de puntos mas proximos a vencer"/>
+                    </VBox>
+                    <Button fx:id="btnRedimirEntradaPuntos" onAction="#onRedimirEntrada"
+                            style="-fx-background-color: #0D0D0D; -fx-text-fill: #C28D39; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8 14;"
+                            text="Redimir Entrada"/>
+                </HBox>
+            </VBox>
+
+            <VBox prefWidth="380.0" spacing="16.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="2. Pago con Tarjeta Virtual"/>
+
+                <VBox spacing="10.0" style="-fx-background-color: #710912; -fx-border-color: #C28D39; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-padding: 18px;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="TARJETA VIRTUAL CINEMAUQ"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblEstadoTarjeta" style="-fx-text-fill: #EFE5D2; -fx-font-weight: bold;" text="ACTIVA"/>
+                    </HBox>
+                    <Label fx:id="lblNumeroTarjeta" style="-fx-text-fill: #EFE5D2; -fx-font-size: 18px; -fx-font-family: 'Consolas';" text="UQ-8849-2026-0091"/>
+                    <VBox>
+                        <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 11px;" text="SALDO DISPONIBLE"/>
+                        <Label fx:id="lblSaldoDisponiblePago" style="-fx-text-fill: #C28D39; -fx-font-size: 20px; -fx-font-weight: bold;" text="$ 120,000.00"/>
+                    </VBox>
+                </VBox>
+
+                <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints halignment="RIGHT"/>
+                    </columnConstraints>
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Subtotal Orden:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblSubtotalOrden" style="-fx-text-fill: #EFE5D2;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label style="-fx-text-fill: #EFE5D2;" text="Puntos a Ganar:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="lblPuntosAGanar" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="0 pts" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 18px; -fx-font-weight: bold;" text="TOTAL A PAGAR:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblTotalAPagar" style="-fx-text-fill: #C28D39; -fx-font-size: 18px; -fx-font-weight: bold;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                </GridPane>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button fx:id="btnPagarCompra" maxWidth="Infinity" onAction="#onPagarConTarjeta"
+                        style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;"
+                        text="CONFIRMAR Y PAGAR AHORA"/>
+                <Button fx:id="btnSolicitarRecargaEmergencia" maxWidth="Infinity" onAction="#onIrASolicitarRecarga"
+                        style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8; -fx-cursor: hand;"
+                        text="Solicitar Recarga de Saldo"/>
+                <Button fx:id="btnCancelarOrdenPendiente" maxWidth="Infinity" onAction="#onCancelarCompraPendiente"
+                        style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8; -fx-cursor: hand;"
+                        text="Cancelar Orden"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

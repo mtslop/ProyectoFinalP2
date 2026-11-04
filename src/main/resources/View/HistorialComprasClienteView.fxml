@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="680.0" prefWidth="1040.0" spacing="16.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cinema.controller.HistorialComprasClienteController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Historial de Compras, Cancelaciones y Notificaciones"/>
+
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <VBox spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Mis Compras Realizadas"/>
+            <TableView fx:id="tblHistorialCompras" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colHistId" prefWidth="80.0" text="ID Compra"/>
+                    <TableColumn fx:id="colHistFecha" prefWidth="130.0" text="Fecha Compra"/>
+                    <TableColumn fx:id="colHistFuncion" prefWidth="180.0" text="Pelicula / Funcion"/>
+                    <TableColumn fx:id="colHistTotal" prefWidth="100.0" text="Total Pagado"/>
+                    <TableColumn fx:id="colHistEstado" prefWidth="110.0" text="Estado"/>
+                    <TableColumn fx:id="colHistReembolso" prefWidth="120.0" text="Monto Reembolsado"/>
+                </columns>
+            </TableView>
+
+            <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-padding: 12px; -fx-background-radius: 6px; -fx-border-radius: 6px;">
+                <VBox HBox.hgrow="ALWAYS">
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 13px; -fx-font-weight: bold;" text="Regla de Reembolso segun Tiempo Restante:"/>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 11px;" text="Mas de 24h: 100% | Entre 2h y 24h: 80% | Menos de 2h: No permitida"/>
+                </VBox>
+                <Button fx:id="btnCancelarCompraCliente" onAction="#onSolicitarCancelacionCompra"
+                        style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9 15;"
+                        text="Cancelar Compra Seleccionada"/>
+            </HBox>
+        </VBox>
+
+        <VBox prefWidth="330.0" spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Bandeja de Notificaciones (Observer)"/>
+            <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" wrapText="true"
+                   text="Mensajes recibidos desde NotificacionCentro:"/>
+            <ListView fx:id="lstNotificacionesCliente" style="-fx-control-inner-background: #0D0D0D; -fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
+</VBox>

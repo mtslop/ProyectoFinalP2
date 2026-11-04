@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="680.0" prefWidth="1040.0" spacing="18.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.cinema.controller.MonederoPuntosClienteController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+    </padding>
+
+    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Monedero Virtual y Programa de Puntos CinemaUQ"/>
+
+    <TabPane style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="TARJETA VIRTUAL Y MOVIMIENTOS">
+            <HBox spacing="20.0" style="-fx-background-color: #362822;">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+
+                <VBox prefWidth="340.0" spacing="14.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding>
+                        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/>
+                    </padding>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Solicitar Recarga de Tarjeta"/>
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" wrapText="true"
+                           text="Ingresa el monto para crear una SolicitudRecarga pendiente de aprobacion por el administrador."/>
+
+                    <VBox spacing="5.0">
+                        <Label style="-fx-text-fill: #EFE5D2;" text="Monto a Recargar ($):"/>
+                        <TextField fx:id="txtMontoSolicitudRecarga" promptText="Monto en pesos" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7;"/>
+                    </VBox>
+
+                    <Button fx:id="btnEnviarSolicitudRecarga" maxWidth="Infinity" onAction="#onSolicitarRecarga"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
+                            text="Enviar Solicitud de Recarga"/>
+
+                    <Separator/>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 14px; -fx-font-weight: bold;" text="Mis Solicitudes Enviadas"/>
+                    <TableView fx:id="tblMisSolicitudesRecarga" style="-fx-background-color: #362822; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colSolId" prefWidth="70.0" text="ID"/>
+                            <TableColumn fx:id="colSolMonto" prefWidth="95.0" text="Monto"/>
+                            <TableColumn fx:id="colSolEstado" prefWidth="115.0" text="Estado"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="12.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/>
+                    </padding>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Historial de Movimientos de la Tarjeta"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblResumenTarjetaNumero" style="-fx-text-fill: #EFE5D2;" text="Numero Tarjeta: ---"/>
+                    </HBox>
+                    <TableView fx:id="tblMovimientosTarjeta" style="-fx-background-color: #362822; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colMovId" prefWidth="85.0" text="ID Mov."/>
+                            <TableColumn fx:id="colMovFecha" prefWidth="145.0" text="Fecha y Hora"/>
+                            <TableColumn fx:id="colMovTipo" prefWidth="115.0" text="TipoMovimiento"/>
+                            <TableColumn fx:id="colMovValor" prefWidth="110.0" text="Valor ($)"/>
+                            <TableColumn fx:id="colMovDescripcion" prefWidth="220.0" text="Descripcion"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </Tab>
+
+        <Tab text="CUENTA DE PUNTOS Y VIGENCIA">
+            <VBox spacing="15.0" style="-fx-background-color: #362822;">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                </padding>
+
+                <HBox alignment="CENTER_LEFT" spacing="25.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <padding>
+                        <Insets bottom="12.0" left="20.0" right="20.0" top="12.0"/>
+                    </padding>
+                    <VBox>
+                        <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="TOTAL PUNTOS DISPONIBLES"/>
+                        <Label fx:id="lblTotalPuntosDisponibles" style="-fx-text-fill: #C28D39; -fx-font-size: 22px; -fx-font-weight: bold;" text="0 pts"/>
+                    </VBox>
+                    <Separator orientation="VERTICAL"/>
+                    <VBox>
+                        <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="ESTRATEGIA DE PUNTOS ACTIVA (STRATEGY)"/>
+                        <Label fx:id="lblEstrategiaActiva" style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="EstrategiaPuntosEstandar"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnDepurarPuntosVencidos" onAction="#onEliminarPuntosVencidos"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8 15;"
+                            text="Depurar Puntos Vencidos"/>
+                </HBox>
+
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Registros de Puntos (Vigencia de 1 Ano desde Fecha de Obtencion)"/>
+                <TableView fx:id="tblRegistrosPuntos" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colRegCantidadInicial" prefWidth="160.0" text="Cantidad Obtenida"/>
+                        <TableColumn fx:id="colRegCantidadDisponible" prefWidth="160.0" text="Cantidad Disponible"/>
+                        <TableColumn fx:id="colRegFechaObtencion" prefWidth="180.0" text="Fecha Obtencion"/>
+                        <TableColumn fx:id="colRegFechaVencimiento" prefWidth="180.0" text="Fecha Vencimiento"/>
+                        <TableColumn fx:id="colRegEstadoVencido" prefWidth="150.0" text="Estado"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

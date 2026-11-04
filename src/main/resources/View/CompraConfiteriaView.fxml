@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="1180.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.cinema.controller.CompraConfiteriaController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="15.0"/>
+            </padding>
+            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 24px; -fx-font-weight: bold;" text="Area de Confiteria y Combos CinemaUQ"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 13px;" text="Selecciona productos individuales o combos agrupados"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20.0" style="-fx-background-color: #0D0D0D;">
+            <padding>
+                <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+            </padding>
+
+            <VBox spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                </padding>
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Catalogo Disponible (ItemConfiteria: Producto y Combo)"/>
+                <TableView fx:id="tblCatalogoConfiteria" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colItemCodigo" prefWidth="90.0" text="Codigo"/>
+                        <TableColumn fx:id="colItemNombre" prefWidth="220.0" text="Nombre del Producto / Combo"/>
+                        <TableColumn fx:id="colItemTipo" prefWidth="110.0" text="Tipo"/>
+                        <TableColumn fx:id="colItemPrecio" prefWidth="110.0" text="Precio"/>
+                        <TableColumn fx:id="colItemPuntosRedencion" prefWidth="130.0" text="Puntos Redencion"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-weight: bold;" text="Cantidad:"/>
+                    <Spinner fx:id="spnCantidadItem" prefWidth="90.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;"/>
+                    <Button fx:id="btnAgregarACompra" onAction="#onAgregarItemCompra"
+                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8 16;"
+                            text="Agregar a la Compra"/>
+                    <Button fx:id="btnRedimirConPuntos" onAction="#onRedimirItemConPuntos"
+                            style="-fx-background-color: #0D0D0D; -fx-text-fill: #C28D39; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 8 16;"
+                            text="Redimir con Puntos"/>
+                </HBox>
+            </VBox>
+
+            <VBox prefWidth="440.0" spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                </padding>
+                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Detalles de Confiteria en la Compra"/>
+                <TableView fx:id="tblDetalleConfiteria" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colDetItem" prefWidth="175.0" text="Item"/>
+                        <TableColumn fx:id="colDetCant" prefWidth="65.0" text="Cant."/>
+                        <TableColumn fx:id="colDetUnitario" prefWidth="85.0" text="Unitario"/>
+                        <TableColumn fx:id="colDetSubtotal" prefWidth="90.0" text="Subtotal"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Button onAction="#onEliminarDetalle"
+                            style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 6 12;"
+                            text="Quitar Seleccionado"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="Subtotal Confiteria:"/>
+                    <Label fx:id="lblTotalConfiteria" style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="$ 0.00"/>
+                </HBox>
+
+                <Button fx:id="btnIrResumenPago" maxWidth="Infinity" onAction="#onIrACheckout"
+                        style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;"
+                        text="IR AL RESUMEN Y PAGO FINAL"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
