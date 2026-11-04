@@ -109,11 +109,11 @@
                                 <Label style="-fx-text-fill: #EFE5D2;" text="Contrasena:" />
                                 <PasswordField fx:id="txtRegistroContrasena" promptText="Contrasena segura" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 7;" />
                             </VBox>
-                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
+                            <rowConstraints>
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                            </rowConstraints>
                         </GridPane>
 
                         <Label fx:id="lblMensajeRegistro" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="" />
