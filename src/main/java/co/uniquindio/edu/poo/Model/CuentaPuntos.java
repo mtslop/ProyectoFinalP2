@@ -117,4 +117,14 @@ public class CuentaPuntos {
             }
         }
     }
+    /**
+     * Registra un lote con una cantidad de puntos ya calculada, con vencimiento a un año.
+     *
+     * @param cantidad puntos a acumular
+     */
+    public void acumularCantidad(int cantidad) {
+        if (cantidad > 0) {
+            registros.add(new RegistroPuntos(cantidad, LocalDate.now()));
+        }
+    }
 }
