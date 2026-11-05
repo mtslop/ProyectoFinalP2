@@ -53,7 +53,7 @@ public class ServicioCliente {
     public List<Funcion> consultarFunciones(Pelicula pelicula) {
         List<Funcion> resultado = new ArrayList<>();
         for (Funcion f : cinema.getFunciones()) {
-            if (f.getPelicula() == pelicula && !f.isCancelada() && !f.estaFinalizada()) {
+            if (f.getPelicula() == pelicula && !f.estaCancelada() && !f.estaFinalizada()) {
                 resultado.add(f);
             }
         }

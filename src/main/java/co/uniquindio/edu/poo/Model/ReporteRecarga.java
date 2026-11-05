@@ -36,7 +36,7 @@ public class ReporteRecarga extends  ReporteOperativo{
     @Override
     protected List<String[]> obtenerRegistros(CinemaUQ cinema, LocalDate inicio, LocalDate fin) {
         List<String[]> filas = new ArrayList<>();
-        for (Persona p : cinema.getPersonas()) {
+        for (Persona p : cinema.getUsuarios()) {
             if (p instanceof Cliente cliente) {
                 TarjetaVirtual tarjeta = cliente.getTarjeta();
                 for (Movimiento m : tarjeta.getMovimientos()) {

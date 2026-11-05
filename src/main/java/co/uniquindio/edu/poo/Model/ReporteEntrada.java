@@ -63,4 +63,3 @@ public class ReporteEntrada extends ReporteOperativo {
         getTotales().put("Total entradas vendidas", total);
     }
 }
-

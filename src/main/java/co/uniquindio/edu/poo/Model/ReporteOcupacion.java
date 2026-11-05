@@ -35,7 +35,7 @@ public class ReporteOcupacion extends ReporteOperativo{
     protected List<String[]> obtenerRegistros(CinemaUQ cinema, LocalDate inicio, LocalDate fin) {
         List<String[]> filas = new ArrayList<>();
         for (Funcion f : cinema.getFunciones()) {
-            if (!f.isCancelada() && estaEnPeriodo(f.getFechaHora().toLocalDate(), inicio, fin)) {
+            if (!f.estaCancelada() && estaEnPeriodo(f.getFechaHora().toLocalDate(), inicio, fin)) {
                 filas.add(new String[]{
                         f.getFechaHora().toString(),
                         f.getPelicula().getTitulo(),
