@@ -92,7 +92,7 @@
                     <Label fx:id="lblNumeroTarjeta" style="-fx-text-fill: #EFE5D2; -fx-font-size: 18px; -fx-font-family: 'Consolas';" text="UQ-8849-2026-0091"/>
                     <VBox>
                         <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 11px;" text="SALDO DISPONIBLE"/>
-                        <Label fx:id="lblSaldoDisponiblePago" style="-fx-text-fill: #C28D39; -fx-font-size: 20px; -fx-font-weight: bold;" text="$ 120,000.00"/>
+                        <Label fx:id="lblSaldoDisponiblePago" style="-fx-text-fill: #C28D39; -fx-font-size: 20px; -fx-font-weight: bold;" text="\$ 120,000.00"/>
                     </VBox>
                 </VBox>
 
@@ -102,13 +102,13 @@
                         <ColumnConstraints halignment="RIGHT"/>
                     </columnConstraints>
                     <Label style="-fx-text-fill: #EFE5D2;" text="Subtotal Orden:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <Label fx:id="lblSubtotalOrden" style="-fx-text-fill: #EFE5D2;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblSubtotalOrden" style="-fx-text-fill: #EFE5D2;" text="\$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
                     <Label style="-fx-text-fill: #EFE5D2;" text="Puntos a Ganar:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                     <Label fx:id="lblPuntosAGanar" style="-fx-text-fill: #C28D39; -fx-font-weight: bold;" text="0 pts" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
                     <Label style="-fx-text-fill: #C28D39; -fx-font-size: 18px; -fx-font-weight: bold;" text="TOTAL A PAGAR:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <Label fx:id="lblTotalAPagar" style="-fx-text-fill: #C28D39; -fx-font-size: 18px; -fx-font-weight: bold;" text="$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblTotalAPagar" style="-fx-text-fill: #C28D39; -fx-font-size: 18px; -fx-font-weight: bold;" text="\$ 0.00" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 </GridPane>
 
                 <Region VBox.vgrow="ALWAYS"/>
