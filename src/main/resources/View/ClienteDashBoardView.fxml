@@ -6,7 +6,7 @@
 
 <BorderPane fx:id="mainClienteBorderPane" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="co.edu.uniquindio.cinema.controller.ClienteDashboardController">
+            fx:controller="co.uniquindio.edu.poo.controller.ClienteDashboardController">
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">

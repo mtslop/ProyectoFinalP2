@@ -6,7 +6,7 @@
 
 <BorderPane prefHeight="700.0" prefWidth="1180.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="co.edu.uniquindio.cinema.controller.CompraConfiteriaController">
+            fx:controller="co.uniquindio.edu.poo.controller.CompraConfiteriaController">
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">

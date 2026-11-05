@@ -44,7 +44,7 @@ public class ReporteVentas extends ReporteOperativo{
                 filas.add(new String[]{
                         c.getFecha().toLocalDate().toString(),
                         c.getCliente().getNombre(),
-                        c.getFuncion().getPelicula().getTitulo(),
+                        c.getFuncion() != null ? c.getFuncion().getPelicula().getTitulo() : "Solo confitería",
                         String.valueOf(c.getEntradas().size()),
                         String.format("%.0f", c.getTotal())
                 });
@@ -66,4 +66,3 @@ public class ReporteVentas extends ReporteOperativo{
         getTotales().put("Total vendido", total);
     }
 }
-

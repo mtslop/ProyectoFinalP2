@@ -7,7 +7,7 @@
 
 <BorderPane prefHeight="740.0" prefWidth="1220.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="co.edu.uniquindio.cinema.controller.SeleccionAsientosController">
+            fx:controller="co.uniquindio.edu.poo.controller.SeleccionAsientosController">
 
     <top>
         <VBox spacing="10.0" style="-fx-background-color: #0D0D0D;">

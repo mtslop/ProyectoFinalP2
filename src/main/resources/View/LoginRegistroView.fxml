@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<BorderPane prefHeight="680.0" prefWidth="1050.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.cinema.controller.LoginRegistroController">
+<BorderPane prefHeight="680.0" prefWidth="1050.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.poo.controller.LoginRegistroController">
 
     <left>
         <VBox alignment="CENTER" prefWidth="420.0" spacing="20.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 1.5 0 0;">

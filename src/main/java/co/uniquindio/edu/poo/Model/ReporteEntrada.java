@@ -38,7 +38,7 @@ public class ReporteEntrada extends ReporteOperativo {
     protected List<String[]> obtenerRegistros(CinemaUQ cinema, LocalDate inicio, LocalDate fin) {
         Map<String, Integer> porPelicula = new LinkedHashMap<>();
         for (Compra c : cinema.getCompras()) {
-            if ("PAGADA".equals(c.getEstado().nombre())
+            if ("PAGADA".equals(c.getEstado().nombre()) && c.getFuncion() != null
                     && estaEnPeriodo(c.getFecha().toLocalDate(), inicio, fin)) {
                 String titulo = c.getFuncion().getPelicula().getTitulo();
                 porPelicula.merge(titulo, c.getEntradas().size(), Integer::sum);

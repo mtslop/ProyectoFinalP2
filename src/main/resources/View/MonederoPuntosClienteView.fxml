@@ -6,7 +6,7 @@
 
 <VBox prefHeight="680.0" prefWidth="1040.0" spacing="18.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="co.edu.uniquindio.cinema.controller.MonederoPuntosClienteController">
+      fx:controller="co.uniquindio.edu.poo.controller.MonederoPuntosClienteController">
     <padding>
         <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
     </padding>
