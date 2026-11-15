@@ -4,113 +4,118 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="720.0" prefWidth="1060.0" spacing="16.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+<VBox prefHeight="720.0" prefWidth="1060.0" spacing="16.0" styleClass="app-canvas"
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="co.uniquindio.edu.poo.controller.AdminCarteleraSalasController">
     <padding>
-        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0"/>
+        <Insets bottom="22.0" left="24.0" right="24.0" top="20.0"/>
     </padding>
 
-    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="Gestion Administrativa de Peliculas, Salas y Funciones"/>
+    <VBox spacing="2.0">
+        <Label styleClass="page-title" text="Películas, Salas y Funciones"/>
+        <Label styleClass="text-muted" text="Administra el catálogo de películas, configura salas y programa horarios sin solapamientos"/>
+    </VBox>
 
-    <TabPane style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
 
-        <Tab text="GESTION DE PELICULAS">
-            <HBox spacing="20.0" style="-fx-background-color: #362822;">
-                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
-                <VBox prefWidth="340.0" spacing="10.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registrar Pelicula"/>
-                    <TextField fx:id="txtPeliCodigo" promptText="Codigo" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtPeliTitulo" promptText="Titulo" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtPeliDuracion" promptText="Duracion en minutos" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <ComboBox fx:id="cmbPeliGenero" maxWidth="Infinity" promptText="Genero" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
-                    <ComboBox fx:id="cmbPeliClasificacion" maxWidth="Infinity" promptText="Clasificacion" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
-                    <TextArea fx:id="txtPeliSinopsis" prefHeight="80.0" promptText="Sinopsis" style="-fx-control-inner-background: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;" wrapText="true"/>
-                    <CheckBox fx:id="chkPeliEnCartelera" selected="true" style="-fx-text-fill: #EFE5D2;" text="Disponible en Cartelera"/>
+        <Tab text="Películas">
+            <HBox spacing="18.0">
+                <padding><Insets bottom="6.0" left="2.0" right="2.0" top="14.0"/></padding>
+                <VBox prefWidth="330.0" spacing="10.0" styleClass="card">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Nueva Película"/>
+                    <TextField fx:id="txtPeliCodigo" promptText="Código (Ej: P006)"/>
+                    <TextField fx:id="txtPeliTitulo" promptText="Título"/>
+                    <TextField fx:id="txtPeliDuracion" promptText="Duración (minutos)"/>
+                    <ComboBox fx:id="cmbPeliGenero" maxWidth="Infinity" promptText="Género"/>
+                    <ComboBox fx:id="cmbPeliClasificacion" maxWidth="Infinity" promptText="Clasificación"/>
+                    <TextArea fx:id="txtPeliSinopsis" prefHeight="75.0" promptText="Sinopsis" wrapText="true"/>
+                    <CheckBox fx:id="chkPeliEnCartelera" selected="true" text="Disponible en Cartelera"/>
                     <Button maxWidth="Infinity" onAction="#onRegistrarPelicula"
-                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
-                            text="Guardar Pelicula"/>
+                            styleClass="btn-primary" text="Guardar Película"/>
                 </VBox>
 
-                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Listado de Peliculas"/>
-                    <TableView fx:id="tblAdminPeliculas" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Catálogo Registrado"/>
+                    <TableView fx:id="tblAdminPeliculas" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                         <columns>
-                            <TableColumn fx:id="colAdmPeliCod" prefWidth="85.0" text="Codigo"/>
-                            <TableColumn fx:id="colAdmPeliTit" prefWidth="200.0" text="Titulo"/>
-                            <TableColumn fx:id="colAdmPeliGen" prefWidth="110.0" text="Genero"/>
-                            <TableColumn fx:id="colAdmPeliClas" prefWidth="120.0" text="Clasificacion"/>
-                            <TableColumn fx:id="colAdmPeliDur" prefWidth="80.0" text="Minutos"/>
-                            <TableColumn fx:id="colAdmPeliActiva" prefWidth="95.0" text="En Cartelera"/>
+                            <TableColumn fx:id="colAdmPeliCod" maxWidth="85.0" minWidth="70.0" text="Código"/>
+                            <TableColumn fx:id="colAdmPeliTit" prefWidth="200.0" text="Título"/>
+                            <TableColumn fx:id="colAdmPeliGen" prefWidth="110.0" text="Género"/>
+                            <TableColumn fx:id="colAdmPeliClas" prefWidth="120.0" text="Clasificación"/>
+                            <TableColumn fx:id="colAdmPeliDur" maxWidth="85.0" minWidth="70.0" text="Minutos"/>
+                            <TableColumn fx:id="colAdmPeliActiva" maxWidth="95.0" minWidth="80.0" text="Cartelera"/>
                         </columns>
                     </TableView>
                 </VBox>
             </HBox>
         </Tab>
 
-        <Tab text="SALAS Y ASIENTOS">
-            <HBox spacing="20.0" style="-fx-background-color: #362822;">
-                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
-                <VBox prefWidth="340.0" spacing="12.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registrar Sala"/>
-                    <TextField fx:id="txtSalaNumero" promptText="Numero de Sala" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtSalaFilas" promptText="Cantidad de Filas" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtSalaAsientosPorFila" promptText="Asientos por Fila" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <ComboBox fx:id="cmbTipoAsientoDefecto" maxWidth="Infinity" promptText="TipoAsiento" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
+        <Tab text="Salas y Asientos">
+            <HBox spacing="18.0">
+                <padding><Insets bottom="6.0" left="2.0" right="2.0" top="14.0"/></padding>
+                <VBox prefWidth="330.0" spacing="11.0" styleClass="card">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Registrar Sala"/>
+                    <TextField fx:id="txtSalaNumero" promptText="Número de Sala"/>
+                    <TextField fx:id="txtSalaFilas" promptText="Cantidad de Filas (1 - 26)"/>
+                    <TextField fx:id="txtSalaAsientosPorFila" promptText="Asientos por Fila"/>
+                    <ComboBox fx:id="cmbTipoAsientoDefecto" maxWidth="Infinity" promptText="Tipo de Asiento Base"/>
                     <Button maxWidth="Infinity" onAction="#onRegistrarSala"
-                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
-                            text="Registrar Sala y Generar Asientos"/>
+                            styleClass="btn-primary" text="Crear Sala y Asientos"/>
                 </VBox>
 
-                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Salas Registradas"/>
-                    <TableView fx:id="tblAdminSalas" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Salas Configuradas"/>
+                    <TableView fx:id="tblAdminSalas" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                         <columns>
-                            <TableColumn fx:id="colAdmSalaNum" prefWidth="120.0" text="Numero Sala"/>
+                            <TableColumn fx:id="colAdmSalaNum" prefWidth="130.0" text="Sala"/>
                             <TableColumn fx:id="colAdmSalaCap" prefWidth="150.0" text="Capacidad"/>
-                            <TableColumn fx:id="colAdmSalaAsientos" prefWidth="350.0" text="Total Asientos Creados"/>
+                            <TableColumn fx:id="colAdmSalaAsientos" prefWidth="250.0" text="Asientos Generados"/>
                         </columns>
                     </TableView>
                 </VBox>
             </HBox>
         </Tab>
 
-        <Tab text="FUNCIONES Y CANCELACIONES">
-            <HBox spacing="20.0" style="-fx-background-color: #362822;">
-                <padding><Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/></padding>
-                <VBox prefWidth="340.0" spacing="12.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/></padding>
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Registrar Funcion"/>
-                    <TextField fx:id="txtFuncionId" promptText="ID Funcion" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <ComboBox fx:id="cmbFuncionPelicula" maxWidth="Infinity" promptText="Seleccionar Pelicula" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
-                    <ComboBox fx:id="cmbFuncionSala" maxWidth="Infinity" promptText="Seleccionar Sala" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
-                    <DatePicker fx:id="dpFuncionFecha" maxWidth="Infinity" promptText="Fecha" style="-fx-background-color: #362822; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtFuncionHora" promptText="Hora (HH:mm)" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
-                    <TextField fx:id="txtFuncionPrecioBase" promptText="Precio Base ($)" style="-fx-background-color: #362822; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;"/>
+        <Tab text="Funciones y Cancelaciones">
+            <HBox spacing="18.0">
+                <padding><Insets bottom="6.0" left="2.0" right="2.0" top="14.0"/></padding>
+                <VBox prefWidth="330.0" spacing="10.0" styleClass="card">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Programar Función"/>
+                    <TextField fx:id="txtFuncionId" promptText="ID Función (Ej: F006)"/>
+                    <ComboBox fx:id="cmbFuncionPelicula" maxWidth="Infinity" promptText="Película"/>
+                    <ComboBox fx:id="cmbFuncionSala" maxWidth="Infinity" promptText="Sala"/>
+                    <DatePicker fx:id="dpFuncionFecha" maxWidth="Infinity" promptText="Fecha"/>
+                    <TextField fx:id="txtFuncionHora" promptText="Hora (HH:mm)"/>
+                    <TextField fx:id="txtFuncionPrecioBase" promptText="Precio Base ($)"/>
                     <Button maxWidth="Infinity" onAction="#onRegistrarFuncion"
-                            style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 9;"
-                            text="Programar Funcion"/>
+                            styleClass="btn-primary" text="Programar Función"/>
                 </VBox>
 
-                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Funciones del Sistema"/>
-                    <TableView fx:id="tblAdminFunciones" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Funciones Programadas"/>
+                    <TableView fx:id="tblAdminFunciones" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                         <columns>
-                            <TableColumn fx:id="colAdmFuncId" prefWidth="80.0" text="ID"/>
-                            <TableColumn fx:id="colAdmFuncPeli" prefWidth="180.0" text="Pelicula"/>
-                            <TableColumn fx:id="colAdmFuncSala" prefWidth="70.0" text="Sala"/>
+                            <TableColumn fx:id="colAdmFuncId" maxWidth="80.0" minWidth="65.0" text="ID"/>
+                            <TableColumn fx:id="colAdmFuncPeli" prefWidth="180.0" text="Película"/>
+                            <TableColumn fx:id="colAdmFuncSala" maxWidth="70.0" minWidth="55.0" text="Sala"/>
                             <TableColumn fx:id="colAdmFuncFecha" prefWidth="140.0" text="Fecha y Hora"/>
-                            <TableColumn fx:id="colAdmFuncOcup" prefWidth="90.0" text="Ocupacion"/>
-                            <TableColumn fx:id="colAdmFuncEstado" prefWidth="100.0" text="Cancelada"/>
+                            <TableColumn fx:id="colAdmFuncOcup" prefWidth="90.0" text="Ocupación"/>
+                            <TableColumn fx:id="colAdmFuncEstado" maxWidth="95.0" minWidth="80.0" text="Cancelada"/>
                         </columns>
                     </TableView>
                     <HBox alignment="CENTER_RIGHT" spacing="12.0">
-                        <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Reembolsa el 100% a los compradores y emite alerta por NotificacionCentro:"/>
-                        <Button onAction="#onCancelarFuncionPorCine"
-                                style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15;"
-                                text="Cancelar Funcion y Reembolsar 100%"/>
+                        <Label styleClass="text-muted" text="Reembolsa 100% y notifica a los compradores:"/>
+                        <Button onAction="#onCancelarFuncionPorCine" styleClass="btn-danger"
+                                text="Cancelar Función"/>
                     </HBox>
                 </VBox>
             </HBox>

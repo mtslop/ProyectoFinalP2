@@ -4,119 +4,119 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainClienteBorderPane" prefHeight="760.0" prefWidth="1280.0" style="-fx-background-color: #0D0D0D; -fx-font-family: 'Georgia';"
+<BorderPane fx:id="mainClienteBorderPane" prefHeight="760.0" prefWidth="1280.0" styleClass="app-canvas"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="co.uniquindio.edu.poo.controller.ClienteDashboardController">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 0 1.5 0;">
+        <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="topbar">
             <padding>
-                <Insets bottom="12.0" left="25.0" right="25.0" top="12.0"/>
+                <Insets bottom="12.0" left="24.0" right="24.0" top="12.0"/>
             </padding>
-            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 26px; -fx-font-weight: bold;" text="CinemaUQ"/>
+            <HBox alignment="CENTER_LEFT" spacing="2.0">
+                <Label styleClass="cinema-title" text="Cinema"/>
+                <Label style="-fx-text-fill: #E11D48; -fx-font-size: 18px; -fx-font-weight: bold;" text="UQ"/>
+            </HBox>
+            <Label styleClass="text-muted" text="·  Portal del Espectador"/>
             <Region HBox.hgrow="ALWAYS"/>
 
-            <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 6; -fx-background-radius: 6;">
-                <padding>
-                    <Insets bottom="6.0" left="14.0" right="14.0" top="6.0"/>
-                </padding>
-                <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Saldo Tarjeta Virtual:"/>
-                <Label fx:id="lblSaldoTarjeta" style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="\$ 0.00"/>
+            <HBox alignment="CENTER" spacing="6.0" styleClass="pill-emerald">
+                <Label style="-fx-text-fill: #6EE7B7; -fx-font-size: 11px;" text="SALDO:"/>
+                <Label fx:id="lblSaldoTarjeta" style="-fx-text-fill: #34D399; -fx-font-weight: bold;" text="\$ 0"/>
             </HBox>
 
-            <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 6; -fx-background-radius: 6;">
-                <padding>
-                    <Insets bottom="6.0" left="14.0" right="14.0" top="6.0"/>
-                </padding>
-                <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Puntos Disponibles:"/>
-                <Label fx:id="lblPuntosCliente" style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="0 pts"/>
+            <HBox alignment="CENTER" spacing="6.0" styleClass="pill-gold">
+                <Label style="-fx-text-fill: #FDE68A; -fx-font-size: 11px;" text="PUNTOS:"/>
+                <Label fx:id="lblPuntosCliente" style="-fx-text-fill: #FBBF24; -fx-font-weight: bold;" text="0 pts"/>
             </HBox>
 
-            <Button fx:id="btnNotificaciones" onAction="#onAbrirNotificaciones"
-                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7 14; -fx-cursor: hand;"
-                    text="Notificaciones (0)"/>
-            <Label fx:id="lblNombreCliente" style="-fx-text-fill: #EFE5D2; -fx-font-weight: bold;" text="Cliente"/>
-            <Button fx:id="btnCerrarSesion" onAction="#onCerrarSesion"
-                    style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 7 16; -fx-cursor: hand;"
-                    text="Cerrar Sesion"/>
+            <Button fx:id="btnNotificaciones" onAction="#onAbrirNotificaciones" styleClass="btn-ghost" text="Notificaciones (0)"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="lblNombreCliente" styleClass="section-title" text="Cliente"/>
+            <Button fx:id="btnCerrarSesion" onAction="#onCerrarSesion" styleClass="btn-danger" text="Salir"/>
         </HBox>
     </top>
 
     <left>
-        <VBox prefWidth="250.0" spacing="10.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-width: 0 1 0 0;">
+        <VBox prefWidth="220.0" spacing="6.0" styleClass="sidebar">
             <padding>
-                <Insets bottom="20.0" left="14.0" right="14.0" top="25.0"/>
+                <Insets bottom="20.0" left="14.0" right="14.0" top="20.0"/>
             </padding>
-            <Label style="-fx-text-fill: #C28D39; -fx-font-size: 13px; -fx-font-weight: bold;" text="MENU DE NAVEGACION"/>
-            <Button fx:id="btnNavCartelera" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarCartelera"
-                    style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10 15; -fx-cursor: hand;"
-                    text="Cartelera y Funciones"/>
-            <Button fx:id="btnNavCompraConfiteria" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarCompraConfiteria"
-                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10 15; -fx-cursor: hand;"
-                    text="Compra Confiteria y Combos"/>
-            <Button fx:id="btnNavMonedero" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarMonedero"
-                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10 15; -fx-cursor: hand;"
-                    text="Mi Tarjeta y Puntos"/>
-            <Button fx:id="btnNavHistorial" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onMostrarHistorial"
-                    style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 10 15; -fx-cursor: hand;"
-                    text="Mis Compras y Reembolsos"/>
+            <Label styleClass="kpi-label" text="NAVEGACIÓN">
+                <padding><Insets bottom="6.0" left="10.0"/></padding>
+            </Label>
+            <Button fx:id="btnNavCartelera" maxWidth="Infinity" onAction="#onMostrarCartelera"
+                    styleClass="nav-btn" text="Cartelera y Funciones"/>
+            <Button fx:id="btnNavCompraConfiteria" maxWidth="Infinity" onAction="#onMostrarCompraConfiteria"
+                    styleClass="nav-btn" text="Confitería y Combos"/>
+            <Button fx:id="btnNavMonedero" maxWidth="Infinity" onAction="#onMostrarMonedero"
+                    styleClass="nav-btn" text="Monedero y Puntos"/>
+            <Button fx:id="btnNavHistorial" maxWidth="Infinity" onAction="#onMostrarHistorial"
+                    styleClass="nav-btn" text="Historial y Avisos"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <VBox spacing="4.0" styleClass="sub-panel">
+                <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0"/></padding>
+                <Label styleClass="brand-kicker" text="PROGRAMA LEALTAD"/>
+                <Label styleClass="text-muted" wrapText="true"
+                       text="Gana 10 puntos por cada entrada y redímelos en boletas o combos."/>
+            </VBox>
         </VBox>
     </left>
 
     <center>
-        <VBox spacing="18.0" style="-fx-background-color: #0D0D0D;">
+        <VBox spacing="16.0" styleClass="app-canvas">
             <padding>
-                <Insets bottom="25.0" left="25.0" right="25.0" top="20.0"/>
+                <Insets bottom="22.0" left="24.0" right="24.0" top="20.0"/>
             </padding>
 
-            <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
-                <padding>
-                    <Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/>
-                </padding>
-                <Label style="-fx-text-fill: #C28D39; -fx-font-size: 15px; -fx-font-weight: bold;" text="Consultar Cartelera:"/>
-                <TextField fx:id="txtBuscarPelicula" prefWidth="230.0" promptText="Titulo o codigo..." style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 6;"/>
-                <ComboBox fx:id="cmbFiltroGenero" prefWidth="170.0" promptText="Genero" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 5;"/>
-                <ComboBox fx:id="cmbFiltroClasificacion" prefWidth="180.0" promptText="Clasificacion" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39; -fx-border-radius: 5;"/>
-                <Button onAction="#onFiltrarCartelera" style="-fx-background-color: #710912; -fx-text-fill: #EFE5D2; -fx-font-weight: bold; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 6 16;" text="Filtrar"/>
-                <Button onAction="#onLimpiarFiltros" style="-fx-background-color: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39; -fx-border-radius: 5; -fx-padding: 6 16;" text="Limpiar"/>
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+                <VBox spacing="2.0">
+                    <Label styleClass="page-title" text="Cartelera en Exhibición"/>
+                    <Label styleClass="text-muted" text="Selecciona una película para ver su sinopsis y horarios disponibles"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="txtBuscarPelicula" prefWidth="220.0" promptText="Buscar por título o código..."/>
+                <ComboBox fx:id="cmbFiltroGenero" prefWidth="150.0" promptText="Género"/>
+                <ComboBox fx:id="cmbFiltroClasificacion" prefWidth="150.0" promptText="Clasificación"/>
+                <Button onAction="#onFiltrarCartelera" styleClass="btn-primary" text="Filtrar"/>
+                <Button onAction="#onLimpiarFiltros" styleClass="btn-ghost" text="Limpiar"/>
             </HBox>
 
-            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
-
-                <VBox spacing="10.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
-                    <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
-                    </padding>
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Peliculas en Cartelera"/>
-                    <TableView fx:id="tblPeliculasCartelera" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+            <HBox spacing="18.0" VBox.vgrow="ALWAYS">
+                <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Películas Disponibles"/>
+                    <TableView fx:id="tblPeliculasCartelera" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                         <columns>
-                            <TableColumn fx:id="colPeliCodigo" prefWidth="80.0" text="Codigo"/>
-                            <TableColumn fx:id="colPeliTitulo" prefWidth="200.0" text="Titulo"/>
-                            <TableColumn fx:id="colPeliGenero" prefWidth="110.0" text="Genero"/>
-                            <TableColumn fx:id="colPeliClasificacion" prefWidth="120.0" text="Clasificacion"/>
-                            <TableColumn fx:id="colPeliDuracion" prefWidth="90.0" text="Duracion (min)"/>
+                            <TableColumn fx:id="colPeliCodigo" maxWidth="85.0" minWidth="70.0" text="Código"/>
+                            <TableColumn fx:id="colPeliTitulo" prefWidth="210.0" text="Título"/>
+                            <TableColumn fx:id="colPeliGenero" prefWidth="115.0" text="Género"/>
+                            <TableColumn fx:id="colPeliClasificacion" prefWidth="125.0" text="Clasificación"/>
+                            <TableColumn fx:id="colPeliDuracion" maxWidth="95.0" minWidth="75.0" text="Minutos"/>
                         </columns>
                     </TableView>
-                    <Label style="-fx-text-fill: #EFE5D2; -fx-font-size: 12px;" text="Sinopsis de la pelicula seleccionada:"/>
-                    <TextArea fx:id="txtSinopsisPelicula" editable="false" prefHeight="75.0" style="-fx-control-inner-background: #0D0D0D; -fx-text-fill: #EFE5D2; -fx-border-color: #C28D39;" wrapText="true"/>
                 </VBox>
 
-                <VBox prefWidth="440.0" spacing="12.0" style="-fx-background-color: #362822; -fx-border-color: #C28D39; -fx-border-radius: 8; -fx-background-radius: 8;">
-                    <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
-                    </padding>
-                    <Label style="-fx-text-fill: #C28D39; -fx-font-size: 16px; -fx-font-weight: bold;" text="Funciones Programadas"/>
-                    <TableView fx:id="tblFuncionesPelicula" style="-fx-background-color: #0D0D0D; -fx-border-color: #C28D39;" VBox.vgrow="ALWAYS">
+                <VBox prefWidth="440.0" spacing="12.0" styleClass="card">
+                    <padding><Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/></padding>
+                    <Label styleClass="section-title" text="Sinopsis"/>
+                    <TextArea fx:id="txtSinopsisPelicula" editable="false" prefHeight="85.0"
+                              promptText="Selecciona una película de la lista..." wrapText="true"/>
+
+                    <Label styleClass="section-title" text="Funciones Programadas"/>
+                    <TableView fx:id="tblFuncionesPelicula" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
                         <columns>
-                            <TableColumn fx:id="colFuncId" prefWidth="70.0" text="ID"/>
-                            <TableColumn fx:id="colFuncFechaHora" prefWidth="150.0" text="Fecha y Hora"/>
-                            <TableColumn fx:id="colFuncSala" prefWidth="75.0" text="Sala"/>
-                            <TableColumn fx:id="colFuncPrecio" prefWidth="110.0" text="Precio Base"/>
+                            <TableColumn fx:id="colFuncId" maxWidth="75.0" minWidth="60.0" text="ID"/>
+                            <TableColumn fx:id="colFuncFechaHora" prefWidth="145.0" text="Fecha y Hora"/>
+                            <TableColumn fx:id="colFuncSala" prefWidth="85.0" text="Sala"/>
+                            <TableColumn fx:id="colFuncPrecio" prefWidth="95.0" text="Precio"/>
                         </columns>
                     </TableView>
+
                     <Button fx:id="btnIrSeleccionAsientos" maxWidth="Infinity" onAction="#onSeleccionarAsientos"
-                            style="-fx-background-color: #C28D39; -fx-text-fill: #0D0D0D; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 10; -fx-cursor: hand;"
-                            text="SELECCIONAR ASIENTOS Y COMPRAR"/>
+                            styleClass="btn-primary" text="Seleccionar Asientos"/>
                 </VBox>
             </HBox>
         </VBox>
