@@ -44,18 +44,23 @@ public class CompraFacade {
         compra.build();
 
         TarjetaVirtual tarjeta = compra.getTarjeta();
-        if (!tarjeta.estaActiva()) {
+        if (!tarjeta.isActiva()) {
             throw new IllegalStateException("La tarjeta virtual no está activa.");
         }
         if (!tarjeta.tieneSaldo(compra.getTotal())) {
             throw new IllegalStateException("La tarjeta virtual no tiene saldo suficiente.");
         }
 
-        tarjeta.descontar(compra.getTotal());
+        boolean huboCobro = compra.getTotal() > 0;
+        if (huboCobro) {
+            tarjeta.descontar(compra.getTotal());
+        }
         try {
             compra.pagar();
         } catch (RuntimeException excepcion) {
-            tarjeta.reembolsar(compra.getTotal());
+            if (huboCobro) {
+                tarjeta.reembolsar(compra.getTotal());
+            }
             throw excepcion;
         }
 
@@ -64,6 +69,7 @@ public class CompraFacade {
         if (puntos > 0) {
             compra.getCliente().getCuentaPuntos().acumularCantidad(puntos);
         }
+        compra.getCliente().agregarCompra(compra);
         cinema.agregarCompra(compra);
         return compra;
     }
@@ -207,7 +213,9 @@ public class CompraFacade {
      */
     private void ejecutarReembolso(Compra compra, double monto) {
         compra.cancelar();
-        compra.getTarjeta().reembolsar(monto);
+        if (monto > 0) {
+            compra.getTarjeta().reembolsar(monto);
+        }
         compra.registrarReembolso(monto);
     }
 

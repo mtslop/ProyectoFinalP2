@@ -73,4 +73,3 @@ public class ReporteProductos extends ReporteOperativo{
         getTotales().put("Valor total confitería", valor);
     }
 }
-

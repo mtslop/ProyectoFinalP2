@@ -74,61 +74,35 @@ public class ServicioAdmin implements IServicioAdmin {
                 '}';
     }
 
-    /**
-     * Registra una película en el catálogo del cine.
-     *
-     * @param pelicula película a registrar
-     */
     @Override
     public void registrarPelicula(Pelicula pelicula) {
         cinema.getPeliculas().add(pelicula);
     }
 
-    /**
-     * Registra una sala en el cine.
-     *
-     * @param sala sala a registrar
-     */
     @Override
     public void registrarSala(Sala sala) {
         cinema.getSalas().add(sala);
     }
 
-    /**
-     * Programa una función en el cine.
-     *
-     * @param funcion función a registrar
-     */
     @Override
     public void registrarFuncion(Funcion funcion) {
         cinema.getFunciones().add(funcion);
     }
 
-    /**
-     * Registra un producto o combo de confitería.
-     *
-     * @param item producto o combo a registrar
-     */
     @Override
     public void registrarItemConfiteria(ItemConfiteria item) {
         cinema.getProductos().add(item);
     }
 
-    /**
-     * Registra una promoción.
-     *
-     * @param promocion promoción a registrar
-     */
     @Override
     public void registrarPromocion(Promocion promocion) {
         cinema.getPromociones().add(promocion);
     }
 
     /**
-     * Cancela una función, reembolsa el 100 % de las compras pagadas de esa función
-     * y avisa a los clientes que compraron entradas para ella.
-     *
-     * @param funcion función a cancelar
+     * {@inheritDoc}
+     * <p>
+     * Solo se reembolsan las compras pagadas de esa función.
      */
     @Override
     public void cancelarFuncion(Funcion funcion) {
@@ -144,11 +118,9 @@ public class ServicioAdmin implements IServicioAdmin {
     }
 
     /**
-     * Aprueba una solicitud de recarga y recarga la tarjeta del cliente.
-     * Primero se aprueba la solicitud para que una solicitud ya atendida no recargue dos veces.
-     *
-     * @param solicitud solicitud a aprobar
-     * @throws IllegalStateException si la solicitud ya fue atendida
+     * {@inheritDoc}
+     * <p>
+     * Primero se aprueba la solicitud, para que una solicitud ya atendida no recargue dos veces.
      */
     @Override
     public void recargarTarjeta(SolicitudRecarga solicitud) {
@@ -156,22 +128,11 @@ public class ServicioAdmin implements IServicioAdmin {
         solicitud.getCliente().getTarjeta().recargar(solicitud.getMonto());
     }
 
-    /**
-     * Rechaza una solicitud de recarga sin modificar la tarjeta.
-     *
-     * @param solicitud solicitud a rechazar
-     * @throws IllegalStateException si la solicitud ya fue atendida
-     */
     @Override
     public void rechazarRecarga(SolicitudRecarga solicitud) {
         solicitud.rechazar();
     }
 
-    /**
-     * Consulta los clientes registrados en el cine.
-     *
-     * @return lista de clientes
-     */
     @Override
     public List<Cliente> consultarClientes() {
         List<Cliente> clientes = new ArrayList<>();
@@ -183,13 +144,6 @@ public class ServicioAdmin implements IServicioAdmin {
         return clientes;
     }
 
-    /**
-     * Consulta las compras realizadas entre dos fechas, incluidas ambas.
-     *
-     * @param inicio fecha inicial
-     * @param fin    fecha final
-     * @return compras del periodo
-     */
     @Override
     public List<Compra> consultarCompras(LocalDate inicio, LocalDate fin) {
         List<Compra> resultado = new ArrayList<>();
@@ -202,14 +156,6 @@ public class ServicioAdmin implements IServicioAdmin {
         return resultado;
     }
 
-    /**
-     * Crea con la fábrica el reporte del tipo indicado y lo genera para el periodo.
-     *
-     * @param tipo   tipo de reporte
-     * @param inicio fecha inicial
-     * @param fin    fecha final
-     * @return reporte generado
-     */
     @Override
     public ReporteOperativo generarReporte(TipoReporte tipo, LocalDate inicio, LocalDate fin) {
         ReporteOperativo reporte = reporteFactory.crearReporte(tipo);
@@ -218,10 +164,8 @@ public class ServicioAdmin implements IServicioAdmin {
     }
 
     /**
-     * Exporta un reporte a un archivo de texto.
+     * {@inheritDoc}
      *
-     * @param reporte reporte a exportar
-     * @param ruta    ruta del archivo de destino
      * @throws IllegalStateException si el archivo no se puede escribir
      */
     @Override

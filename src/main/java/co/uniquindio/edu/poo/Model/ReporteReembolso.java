@@ -40,7 +40,7 @@ public class ReporteReembolso extends ReporteOperativo{
                 filas.add(new String[]{
                         c.getFecha().toLocalDate().toString(),
                         c.getCliente().getNombre(),
-                        c.getFuncion().getPelicula().getTitulo(),
+                        c.getFuncion() != null ? c.getFuncion().getPelicula().getTitulo() : "Solo confitería",
                         estado,
                         String.format("%.0f", c.getTotal()),
                         String.format("%.0f", c.getMontoReembolsado())

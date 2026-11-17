@@ -42,7 +42,7 @@ public class ReporteOcupacion extends ReporteOperativo{
                         String.valueOf(f.getSala().getNumero()),
                         String.valueOf(f.getAsientosOcupados().size()),
                         String.valueOf(f.getSala().getCapacidad()),
-                        String.format("%.1f", f.ocupacion() * 100)
+                        String.format("%.1f", f.ocupacion())
                 });
             }
         }

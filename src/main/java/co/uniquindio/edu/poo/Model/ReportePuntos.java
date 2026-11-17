@@ -72,4 +72,3 @@ public class ReportePuntos extends ReporteOperativo{
         getTotales().put("Puntos usados", usados);
     }
 }
-
